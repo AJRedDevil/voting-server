@@ -1,0 +1,26 @@
+{
+  "name": "voting-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha .test/test_helper.js",
+    "test:watch": "npm run test --watch"
+  },
+  "keywords": [
+    "node",
+    "redux",
+    "mocha",
+    "chai"
+  ],
+  "author": "AJRedDevil",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-immutable": "^1.6.0",
+    "mocha": "^3.5.0"
+  },
+  "dependencies": {
+    "immutable": "^3.8.1"
+  }
+}
