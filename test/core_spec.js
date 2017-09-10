@@ -82,6 +82,24 @@ describe('application logic', () => {
                 entries: List.of('Django Unchained', 'Titanic', 'Shutter Island')
             }));
         });
+
+        it('marks winner when just one entry left', () => {
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Titanic', 'Shutter Island'),
+                    tally: Map({
+                        'Titanic': 4,
+                        'Shutter Island': 2
+                    })
+                }),
+                entries: List()
+            });
+            const nextState = next(state);
+            expect(nextState).to.equal(Map({
+                winner: 'Titanic'
+            }));
+        });
+        
     });
 
     // Vote
