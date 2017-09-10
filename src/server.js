@@ -1,7 +1,9 @@
 import Server from 'socket.io';
 
+let PORT = 8090;
 const startServer = (store) => {
-    const io = new Server().attach(8090);
+    const io = new Server().attach(PORT);
+    console.log('RUNNING in port: ', PORT);
 
     store.subscribe(
         () => io.emit('state', store.getState().toJS())
