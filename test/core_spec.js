@@ -42,6 +42,46 @@ describe('application logic', () => {
                 entries: List.of('Inception')
             }));
         });
+
+        it('puts winner of current vote back to entries', () => {
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Titanic', 'Shutter Island'),
+                    tally: Map({
+                        'Titanic': 4,
+                        'Shutter Island': 2
+                    })
+                }),
+                entries: List.of('Inception', 'The Revenant', 'Django Unchained')
+            });
+            const nextState = next(state);
+            expect(nextState).to.equal(Map({
+                vote: Map({
+                    pair: List.of('Inception', 'The Revenant'),
+                }),
+                entries: List.of('Django Unchained', 'Titanic')
+            }));
+        });
+
+        it('puts both from tied vote back to entries', () => {
+            const state = Map({
+                vote: Map({
+                    pair: List.of('Titanic', 'Shutter Island'),
+                    tally: Map({
+                        'Titanic': 3,
+                        'Shutter Island': 3
+                    })
+                }),
+                entries: List.of('Inception', 'The Revenant', 'Django Unchained')
+            });
+            const nextState = next(state);
+            expect(nextState).to.equal(Map({
+                vote: Map({
+                    pair: List.of('Inception', 'The Revenant'),
+                }),
+                entries: List.of('Django Unchained', 'Titanic', 'Shutter Island')
+            }));
+        });
     });
 
     // Vote
