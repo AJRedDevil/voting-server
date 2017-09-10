@@ -109,44 +109,32 @@ describe('application logic', () => {
 
             it('creates a tally for the voted entry', () => {
                 const state = Map({
-                    vote: Map({
-                        pair: List.of('Titanic', 'Shutter Island')
-                    }),
-                    entries: List()
+                    pair: List.of('Titanic', 'Shutter Island')
                 });
                 const nextState = vote(state, 'Titanic');
                 expect(nextState).to.equal(Map({
-                    vote: Map({
-                        pair: List.of('Titanic', 'Shutter Island'),
-                        tally: Map({
-                            'Titanic': 1
-                        })
-                    }),
-                    entries: List()
+                    pair: List.of('Titanic', 'Shutter Island'),
+                    tally: Map({
+                        'Titanic': 1
+                    })
                 }));
             });
 
             it('adds to existing tally for the voted entry', () => {
                 const state = Map({
-                    vote: Map({
-                        pair: List.of('Titanic', 'Shutter Island'),
-                        tally: Map({
-                            'Titanic': 3,
-                            'Shutter Island': 2
-                        })
-                    }),
-                    entries: List()
+                    pair: List.of('Titanic', 'Shutter Island'),
+                    tally: Map({
+                        'Titanic': 3,
+                        'Shutter Island': 2
+                    })
                 });
                 const nextState = vote(state, 'Titanic');
                 expect(nextState).to.equal(Map({
-                    vote: Map({
-                        pair: List.of('Titanic', 'Shutter Island'),
-                        tally: Map({
-                            'Titanic': 4,
-                            'Shutter Island': 2
-                        })
-                    }),
-                    entries: List()
+                    pair: List.of('Titanic', 'Shutter Island'),
+                    tally: Map({
+                        'Titanic': 4,
+                        'Shutter Island': 2
+                    })
                 }));
             });
         });
