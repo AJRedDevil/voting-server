@@ -1,5 +1,5 @@
-var { expect } = require('chai');
-var { List, Map } = require('immutable');
+import { List, Map } from 'immutable';
+import { expect } from 'chai';
 
 describe('immutability()', () => {
     // Number
